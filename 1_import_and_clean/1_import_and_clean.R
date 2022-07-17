@@ -11,7 +11,7 @@ setup_disk.frame()
 #cases that received IO meds
 fc_meds.df <-  csv_to_disk.frame(
   infile = file.path(path_to_ESO, "2020_ESO_FC_Meds_2.csv"),
-  outdir =  file.path(path_df, "fc_meds"),
+  outdir =  file.path(path_df, "/diskframes/fc_meds"),
   overwrite = TRUE
 )
 
@@ -49,7 +49,7 @@ meds_iv_acls.df <- fc_meds.df %>%
 #find the codes
 cpr.df <-  csv_to_disk.frame(
   infile = file.path(path_to_ESO, "2020_ESO_CPR.csv"),
-  outdir =  file.path(path_df, "cpr"),
+  outdir =  file.path(path_df, "/diskframes/cpr"),
   overwrite = TRUE
 ) %>% 
   filter(cardiacarrest != "no") %>% 
@@ -68,7 +68,7 @@ cpr.df <-  csv_to_disk.frame(
 #need this to get the IO location
 fc_iv_io_only.df <-  csv_to_disk.frame(
   infile = file.path(path_to_ESO, "2020_ESO_FC_IV_2.csv"),
-  outdir =  file.path(path_df, "fc_iv"),
+  outdir =  file.path(path_df, "/diskframes/fc_iv"),
   overwrite = TRUE
   ) %>% 
   filter(treatment_name  == "intraosseous" & successful == "yes") %>% 
@@ -131,7 +131,7 @@ airways_surgical <- c("needle cricothyroidotomy", "surgical cricothyroidotomy")
 
 fc_airway <-  csv_to_disk.frame(
   infile = file.path(path_to_ESO, "2020_ESO_FC_Airway_2.csv"),
-  outdir =  file.path(path_df, "airway"),
+  outdir =  file.path(path_df, "/diskframes/airway"),
   overwrite = TRUE
   ) %>% 
   filter(treatment_name %in% airways) %>% 
@@ -156,7 +156,7 @@ fc_airway <-  csv_to_disk.frame(
 #dont forget the 911 call / agency data
 incident.df <-  csv_to_disk.frame(
   infile = file.path(path_to_ESO, "2020_ESO_Incident_2.csv"),
-  outdir =  file.path(path_df, "incident"),
+  outdir =  file.path(path_df, "/diskframes/incident"),
   overwrite = TRUE
   ) %>% 
   select(pcrid, agencyid, runtype) %>% 
@@ -165,14 +165,14 @@ incident.df <-  csv_to_disk.frame(
 #pull in the demographics
 patient.df <-  csv_to_disk.frame(
   infile = file.path(path_to_ESO, "2020_ESO_Patient.csv"),
-  outdir =  file.path(path_df, "patient"),
+  outdir =  file.path(path_df, "/diskframes/patient"),
   overwrite = TRUE
 ) %>% 
   select(pcrid, age_yrs, gender, weight_kg)
 
 patient_race.df <- csv_to_disk.frame(
   infile = file.path(path_to_ESO, "2020_ESO_Patient_Race.csv"),
-  outdir =  file.path(path_df, "patient_race"),
+  outdir =  file.path(path_df, "/diskframes/patient_race"),
   overwrite = TRUE
 )
 
