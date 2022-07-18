@@ -1,6 +1,6 @@
 load("1_import_and_clean/output.RData")
 
-dataset <- data_with_iv_coadmin
+dataset <- data_no_iv_coadmin
 
 ##analysis
 #chi  sq
