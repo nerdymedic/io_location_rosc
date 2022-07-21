@@ -2,7 +2,7 @@ load("1_import_and_clean/output.RData")
 
 library(gtsummary)
 
-dataset <- data_no_iv_coadmin
+dataset <- data_with_iv_coadmin
 
 table1 <- dataset %>% 
   select(site_upper_lower, age_yrs, gender, ethnicity, race, arrestwitnessedby, 
